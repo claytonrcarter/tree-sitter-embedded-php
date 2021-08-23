@@ -1,0 +1,41 @@
+{
+  "name": "tree-sitter-php-embedded",
+  "version": "0.0.0",
+  "description": "Embedded PHP grammar for tree-sitter",
+  "keywords": [
+    "parser",
+    "php"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "nan": "^2.14.0"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.16.9"
+  },
+  "scripts": {
+    "build": "./node_modules/.bin/tree-sitter generate && node-gyp build",
+    "test": "./node_modules/.bin/tree-sitter generate && ./node_modules/.bin/tree-sitter test"
+  },
+  "tree-sitter": [
+    {
+      "scope": "text.html.php",
+      "file-types": [
+        "aw",
+        "ctp",
+        "inc",
+        "install",
+        "module",
+        "php",
+        "php_cs",
+        "php3",
+        "php4",
+        "php5",
+        "phpt",
+        "phtml",
+        "profile"
+      ]
+    }
+  ]
+}

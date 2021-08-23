@@ -1,0 +1,51 @@
+=====================
+Absolutely nothing
+=====================
+---
+(source_file)
+
+=====================
+No PHP
+=====================
+Hello, world!
+---
+(source_file (html))
+
+=====================
+Just PHP
+=====================
+<?php blah blah ?>
+---
+(source_file (php))
+
+=====================
+Just php w/o end tag
+=====================
+<?php blah blah
+---
+(source_file (php))
+
+=====================
+HTML then PHP
+=====================
+<div>
+<?php blah blah
+---
+(source_file (html) (php))
+
+=====================
+PHP then HTML
+=====================
+<?php blah blah ?>
+<div>
+---
+(source_file (php) (html))
+
+=====================
+HTML then PHP then HTML again
+=====================
+<div>
+<?php blah blah ?>
+</div>
+---
+(source_file (html) (php) (html))
