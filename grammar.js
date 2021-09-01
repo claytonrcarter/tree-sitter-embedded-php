@@ -1,33 +1,28 @@
-module.exports = grammar({
+const HTML = require('tree-sitter-html/grammar');
+
+module.exports = grammar(HTML, {
   name: "php_embedded",
 
   externals: $ => [
-    $._eof,
-  ],
-
-  conflicts: $ => [
-      [$.html]
+    $._end_of_file,
+    ...HTML.externals,
   ],
 
   rules: {
-    source_file: $ => repeat(choice(
-      $.php,
-      $.html
-    )),
+    // add a PHP "node" to the list of existing HTML nodes
+    _node: $ => choice(
+      HTML.rules._node,
+      $.php
+    ),
 
     php: $ => seq(
+        // regex copied from tree-sitter-php
         /<\?([pP][hH][pP]|=)?/,
         repeat(/./),
         choice(
           '?>',
-          $._eof
+          $._end_of_file
       )
     ),
-
-    // this is taken from the `text` rule in tree-sitter-php
-    html: $ => repeat1(choice(
-      token(prec(-1, /</)),
-      /[^\s<][^<]*/
-    )),
   },
 })

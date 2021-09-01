@@ -2,28 +2,28 @@
 Absolutely nothing
 =====================
 ---
-(source_file)
+(fragment)
 
 =====================
 No PHP
 =====================
 Hello, world!
 ---
-(source_file (html))
+(fragment (text))
 
 =====================
 Just PHP
 =====================
 <?php blah blah ?>
 ---
-(source_file (php))
+(fragment (php))
 
 =====================
 Just php w/o end tag
 =====================
 <?php blah blah
 ---
-(source_file (php))
+(fragment (php))
 
 =====================
 HTML then PHP
@@ -31,7 +31,11 @@ HTML then PHP
 <div>
 <?php blah blah
 ---
-(source_file (html) (php))
+(fragment
+  (element (start_tag (tag_name))
+  (text)
+  (php)
+  (MISSING _implicit_end_tag)))
 
 =====================
 PHP then HTML
@@ -39,7 +43,12 @@ PHP then HTML
 <?php blah blah ?>
 <div>
 ---
-(source_file (php) (html))
+(fragment
+  (php)
+  (text)
+  (element
+    (start_tag (tag_name))
+    (MISSING _implicit_end_tag)))
 
 =====================
 HTML then PHP then HTML again
@@ -48,4 +57,10 @@ HTML then PHP then HTML again
 <?php blah blah ?>
 </div>
 ---
-(source_file (html) (php) (html))
+(fragment
+  (element
+    (start_tag (tag_name))
+    (text)
+    (php)
+    (text)
+    (end_tag (tag_name))))

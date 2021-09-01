@@ -2,6 +2,7 @@
   "name": "tree-sitter-php-embedded",
   "version": "0.0.0",
   "description": "Embedded PHP grammar for tree-sitter",
+  "main": "index.js",
   "keywords": [
     "parser",
     "php"
@@ -12,10 +13,11 @@
     "nan": "^2.14.0"
   },
   "devDependencies": {
-    "tree-sitter-cli": "^0.16.9"
+    "tree-sitter-cli": "^0.17.3",
+    "tree-sitter-html": "^0.19.0"
   },
   "scripts": {
-    "build": "./node_modules/.bin/tree-sitter generate && node-gyp build",
+    "generate": "./node_modules/.bin/tree-sitter generate",
     "test": "./node_modules/.bin/tree-sitter generate && ./node_modules/.bin/tree-sitter test"
   },
   "tree-sitter": [
