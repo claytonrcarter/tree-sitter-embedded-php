@@ -237,15 +237,14 @@ struct Scanner {
   }
 
   bool scan(TSLexer *lexer, const bool *valid_symbols) {
+    while (iswspace(lexer->lookahead)) {
+      lexer->advance(lexer, true);
+    }
 
     // CUSTOM (just the if statement; rest of method is verbatim)
     if (valid_symbols[END_OF_FILE] && lexer->eof(lexer)) {
       lexer->result_symbol = END_OF_FILE;
       return true;
-    }
-
-    while (iswspace(lexer->lookahead)) {
-      lexer->advance(lexer, true);
     }
 
     if (valid_symbols[RAW_TEXT] && !valid_symbols[START_TAG_NAME] && !valid_symbols[END_TAG_NAME]) {

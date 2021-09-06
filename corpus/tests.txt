@@ -26,10 +26,30 @@ Just php w/o end tag
 (fragment (php))
 
 =====================
+Just php w/o end tag (but with leading whitespace)
+=====================
+           <?php blah blah
+---
+(fragment (text) (php))
+
+=====================
 HTML then PHP
 =====================
 <div>
 <?php blah blah
+---
+(fragment
+  (element (start_tag (tag_name))
+  (text)
+  (php)
+  (MISSING _implicit_end_tag)))
+
+=====================
+HTML then PHP (with trailing whitespace: this was a bug)
+=====================
+<div>
+<?php blah blah
+
 ---
 (fragment
   (element (start_tag (tag_name))
@@ -55,6 +75,24 @@ HTML then PHP then HTML again
 =====================
 <div>
 <?php blah blah ?>
+</div>
+---
+(fragment
+  (element
+    (start_tag (tag_name))
+    (text)
+    (php)
+    (text)
+    (end_tag (tag_name))))
+
+=====================
+multiline PHP
+=====================
+<div>
+<?php
+blah
+blah
+?>
 </div>
 ---
 (fragment
