@@ -4,7 +4,7 @@
 
 using namespace v8;
 
-extern "C" TSLanguage * tree_sitter_php_embedded();
+extern "C" TSLanguage * tree_sitter_embedded_php();
 
 namespace {
 
@@ -17,12 +17,12 @@ void Init(Local<Object> exports, Local<Object> module) {
 
   Local<Function> constructor = Nan::GetFunction(tpl).ToLocalChecked();
   Local<Object> instance = constructor->NewInstance(Nan::GetCurrentContext()).ToLocalChecked();
-  Nan::SetInternalFieldPointer(instance, 0, tree_sitter_php_embedded());
+  Nan::SetInternalFieldPointer(instance, 0, tree_sitter_embedded_php());
 
-  Nan::Set(instance, Nan::New("name").ToLocalChecked(), Nan::New("php_embedded").ToLocalChecked());
+  Nan::Set(instance, Nan::New("name").ToLocalChecked(), Nan::New("embedded_php").ToLocalChecked());
   Nan::Set(module, Nan::New("exports").ToLocalChecked(), instance);
 }
 
-NODE_MODULE(tree_sitter_php_embedded_binding, Init)
+NODE_MODULE(tree_sitter_embedded_php_binding, Init)
 
 }  // namespace

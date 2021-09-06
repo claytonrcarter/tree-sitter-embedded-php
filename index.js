@@ -1,13 +1,13 @@
 try {
-  module.exports = require("./build/Release/tree_sitter_php_embedded_binding");
+    module.exports = require("./build/Release/tree_sitter_embedded_php_binding")
 } catch (error) {
-  try {
-    module.exports = require("./build/Debug/tree_sitter_php_embedded_binding");
-  } catch (_) {
-    throw error
-  }
+    try {
+        module.exports = require("./build/Debug/tree_sitter_embedded_php_binding")
+    } catch (_) {
+        throw error
+    }
 }
 
 try {
-  module.exports.nodeTypeInfo = require("./src/node-types.json");
+    module.exports.nodeTypeInfo = require("./src/node-types.json")
 } catch (_) {}

@@ -2,35 +2,35 @@
 Absolutely nothing
 =====================
 ---
-(fragment)
+(template)
 
 =====================
 No PHP
 =====================
 Hello, world!
 ---
-(fragment (text))
+(template (content))
 
 =====================
 Just PHP
 =====================
 <?php blah blah ?>
 ---
-(fragment (php))
+(template (php))
 
 =====================
 Just php w/o end tag
 =====================
 <?php blah blah
 ---
-(fragment (php))
+(template (php))
 
 =====================
 Just php w/o end tag (but with leading whitespace)
 =====================
            <?php blah blah
 ---
-(fragment (text) (php))
+(template (content) (php))
 
 =====================
 HTML then PHP
@@ -38,11 +38,9 @@ HTML then PHP
 <div>
 <?php blah blah
 ---
-(fragment
-  (element (start_tag (tag_name))
-  (text)
-  (php)
-  (MISSING _implicit_end_tag)))
+(template
+  (content)
+  (php))
 
 =====================
 HTML then PHP (with trailing whitespace: this was a bug)
@@ -51,11 +49,9 @@ HTML then PHP (with trailing whitespace: this was a bug)
 <?php blah blah
 
 ---
-(fragment
-  (element (start_tag (tag_name))
-  (text)
-  (php)
-  (MISSING _implicit_end_tag)))
+(template
+  (content)
+  (php))
 
 =====================
 PHP then HTML
@@ -63,12 +59,9 @@ PHP then HTML
 <?php blah blah ?>
 <div>
 ---
-(fragment
+(template
   (php)
-  (text)
-  (element
-    (start_tag (tag_name))
-    (MISSING _implicit_end_tag)))
+  (content))
 
 =====================
 HTML then PHP then HTML again
@@ -77,13 +70,10 @@ HTML then PHP then HTML again
 <?php blah blah ?>
 </div>
 ---
-(fragment
-  (element
-    (start_tag (tag_name))
-    (text)
-    (php)
-    (text)
-    (end_tag (tag_name))))
+(template
+  (content)
+  (php)
+  (content))
 
 =====================
 multiline PHP
@@ -95,10 +85,7 @@ blah
 ?>
 </div>
 ---
-(fragment
-  (element
-    (start_tag (tag_name))
-    (text)
-    (php)
-    (text)
-    (end_tag (tag_name))))
+(template
+  (content)
+  (php)
+  (content))

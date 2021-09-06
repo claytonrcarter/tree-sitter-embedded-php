@@ -13,8 +13,7 @@
     "nan": "^2.14.0"
   },
   "devDependencies": {
-    "tree-sitter-cli": "^0.17.3",
-    "tree-sitter-html": "^0.19.0"
+    "tree-sitter-cli": "^0.17.3"
   },
   "scripts": {
     "generate": "./node_modules/.bin/tree-sitter generate",
