@@ -16,7 +16,7 @@ module.exports = grammar({
     php: $ => seq(
         // regex copied from tree-sitter-php
         /<\?([pP][hH][pP]|=)?/,
-        repeat1(/./),
+        repeat(/./),
         choice(
           '?>',
           $._eof

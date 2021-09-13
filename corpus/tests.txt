@@ -26,7 +26,7 @@ Just php w/o end tag
 (template (php))
 
 =====================
-Just php w/o end tag (but with leading whitespace)
+Just php w/o end tag but with leading whitespace (regression)
 =====================
            <?php blah blah
 ---
@@ -43,7 +43,7 @@ HTML then PHP
   (php))
 
 =====================
-HTML then PHP (with trailing whitespace: this was a bug)
+HTML then PHP with trailing whitespace (regression)
 =====================
 <div>
 <?php blah blah
@@ -52,6 +52,13 @@ HTML then PHP (with trailing whitespace: this was a bug)
 (template
   (content)
   (php))
+
+=====================
+Just PHP start tag (regression)
+=====================
+<?php
+---
+(template (php))
 
 =====================
 PHP then HTML

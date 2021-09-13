@@ -25,7 +25,7 @@
           "value": "<\\?([pP][hH][pP]|=)?"
         },
         {
-          "type": "REPEAT1",
+          "type": "REPEAT",
           "content": {
             "type": "PATTERN",
             "value": "."
