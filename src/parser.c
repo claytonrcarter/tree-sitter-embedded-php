@@ -18,7 +18,7 @@
 enum {
   aux_sym_php_token1 = 1,
   aux_sym_php_token2 = 2,
-  anon_sym_QMARK_GT = 3,
+  aux_sym_php_token3 = 3,
   sym__eof = 4,
   sym_template = 5,
   sym_php = 6,
@@ -31,7 +31,7 @@ static const char *ts_symbol_names[] = {
   [ts_builtin_sym_end] = "end",
   [aux_sym_php_token1] = "php_token1",
   [aux_sym_php_token2] = "php_token2",
-  [anon_sym_QMARK_GT] = "\?>",
+  [aux_sym_php_token3] = "php_token3",
   [sym__eof] = "_eof",
   [sym_template] = "template",
   [sym_php] = "php",
@@ -44,7 +44,7 @@ static TSSymbol ts_symbol_map[] = {
   [ts_builtin_sym_end] = ts_builtin_sym_end,
   [aux_sym_php_token1] = aux_sym_php_token1,
   [aux_sym_php_token2] = aux_sym_php_token2,
-  [anon_sym_QMARK_GT] = anon_sym_QMARK_GT,
+  [aux_sym_php_token3] = aux_sym_php_token3,
   [sym__eof] = sym__eof,
   [sym_template] = sym_template,
   [sym_php] = sym_php,
@@ -66,8 +66,8 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = false,
     .named = false,
   },
-  [anon_sym_QMARK_GT] = {
-    .visible = true,
+  [aux_sym_php_token3] = {
+    .visible = false,
     .named = false,
   },
   [sym__eof] = {
@@ -161,7 +161,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       if (lookahead == '?') ADVANCE(7);
       END_STATE();
     case 11:
-      ACCEPT_TOKEN(anon_sym_QMARK_GT);
+      ACCEPT_TOKEN(aux_sym_php_token3);
       END_STATE();
     default:
       return false;
@@ -202,7 +202,7 @@ static uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [ts_builtin_sym_end] = ACTIONS(1),
     [aux_sym_php_token1] = ACTIONS(1),
     [aux_sym_php_token2] = ACTIONS(1),
-    [anon_sym_QMARK_GT] = ACTIONS(1),
+    [aux_sym_php_token3] = ACTIONS(1),
     [sym__eof] = ACTIONS(1),
   },
   [1] = {
@@ -240,7 +240,7 @@ static uint16_t ts_small_parse_table[] = {
     ACTIONS(19), 1,
       aux_sym_php_token2,
     ACTIONS(21), 1,
-      anon_sym_QMARK_GT,
+      aux_sym_php_token3,
     ACTIONS(23), 1,
       sym__eof,
     STATE(6), 1,
@@ -258,7 +258,7 @@ static uint16_t ts_small_parse_table[] = {
     ACTIONS(31), 1,
       aux_sym_php_token2,
     ACTIONS(33), 1,
-      anon_sym_QMARK_GT,
+      aux_sym_php_token3,
     ACTIONS(35), 1,
       sym__eof,
     STATE(8), 1,
@@ -276,7 +276,7 @@ static uint16_t ts_small_parse_table[] = {
     ACTIONS(37), 1,
       sym__eof,
     ACTIONS(39), 1,
-      anon_sym_QMARK_GT,
+      aux_sym_php_token3,
     ACTIONS(44), 1,
       aux_sym_php_token2,
     STATE(8), 1,
