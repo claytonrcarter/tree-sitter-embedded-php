@@ -7,7 +7,7 @@
     "parser",
     "php"
   ],
-  "author": "",
+  "author": "Clayton Carter",
   "license": "MIT",
   "dependencies": {
     "nan": "^2.14.0"
