@@ -96,3 +96,31 @@ blah
   (content)
   (php)
   (content))
+
+=====================
+PHP w/ end tag in a double quote string (regression)
+=====================
+<?php "blah blah ?>"
+---
+(template (php))
+
+=====================
+PHP w/ end tag in a single quote string (regression)
+=====================
+<?php 'blah blah ?>'
+---
+(template (php))
+
+=====================
+PHP w/ end tag in a double quote string w/ escape (regression)
+=====================
+<?php "\"blah blah\" ?>"
+---
+(template (php))
+
+=====================
+PHP w/ end tag in a single quote string w/ escape (regression)
+=====================
+<?php '\'blah blah\' ?>'
+---
+(template (php))

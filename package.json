@@ -17,7 +17,7 @@
   },
   "scripts": {
     "generate": "./node_modules/.bin/tree-sitter generate",
-    "test": "./node_modules/.bin/tree-sitter generate && ./node_modules/.bin/tree-sitter test"
+    "test": "if [ $(stat -f %m ./grammar.js) -gt $(stat -f %m src/grammar.json) ]; then ./node_modules/.bin/tree-sitter generate; fi && ./node_modules/.bin/tree-sitter test"
   },
   "tree-sitter": [
     {
