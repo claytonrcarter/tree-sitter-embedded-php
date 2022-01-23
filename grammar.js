@@ -1,19 +1,15 @@
 module.exports = grammar({
   name: "embedded_php",
 
-  extras: $ => [/\r?\n/],
+  extras: ($) => [/\r?\n/],
 
-  externals: $ => [
-    $._eof,
-  ],
+  externals: ($) => [$._eof],
 
   rules: {
-    template: $ => repeat(choice(
-      $.php,
-      $.content
-    )),
+    template: ($) => repeat(choice($.php, $.content)),
 
-    php: $ => seq(
+    php: ($) =>
+      seq(
         // regex copied from tree-sitter-php
         /<\?([pP][hH][pP]|=)?/,
         repeat(/./),
@@ -23,9 +19,9 @@ module.exports = grammar({
           // it would be added as an anonymous child node of `(php)`.
           /\?>/,
           $._eof
-      )
-    ),
+        )
+      ),
 
-    content: $ => prec.right(repeat1(/./)),
+    content: ($) => prec.right(repeat1(/./)),
   },
-})
+});
