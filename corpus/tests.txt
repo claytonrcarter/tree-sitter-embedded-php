@@ -126,9 +126,16 @@ PHP w/ end tag in a single quote string w/ escape (regression)
 (template (php))
 
 =====================
-PHP w/ end tag in a comment (regression)
+PHP w/ end tag "in" a line comment (regression)
 =====================
-<?php // ?>
+<?php // ?> "not php anymore"
+---
+(template (php) (content))
+
+=====================
+PHP w/ end tag in a block comment (regression)
+=====================
+<?php /* ?> */ "still php"
 ---
 (template (php))
 
