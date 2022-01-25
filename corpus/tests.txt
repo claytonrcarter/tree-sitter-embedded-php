@@ -124,3 +124,26 @@ PHP w/ end tag in a single quote string w/ escape (regression)
 <?php '\'blah blah\' ?>'
 ---
 (template (php))
+
+=====================
+PHP w/ end tag in a comment (regression)
+=====================
+<?php // ?>
+---
+(template (php))
+
+=====================
+PHP comments w/ "unclosed" strings (regression)
+=====================
+<?php
+// it's all good
+ "a";
+# "
+ "b";
+/* " */
+ "c";
+/* it's still all good
+*/
+ "d";
+---
+(template (php))

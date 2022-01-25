@@ -15,13 +15,20 @@ module.exports = grammar({
 
         repeat(
           choice(
-            /[^"']/,
+            // swallow anything w/i php tags
+            /./,
 
-            // Prevent end tag w/i a string (eg `echo "?>"`) from prematurely
-            // ending the php node
+            // swallow anything w/i strings
+            // This prevents end tag w/i a string (eg `echo "?>"`) from
+            // prematurely ending the php node
             // FIXME this will match unbalanced quotes, eg: "my string'
             // FIXME this does not handle heredoc or nowdoc
-            /['"].*['"]/
+            /['"].*['"]/,
+
+            // swallow anything w/i comments
+            // This prevents end tags and string chars from affecting parsing
+            /(\/\/|#).*\n/,
+            /\/\*(.|\r?\n)*\*\//
           )
         ),
 

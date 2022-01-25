@@ -31,11 +31,19 @@
             "members": [
               {
                 "type": "PATTERN",
-                "value": "[^\"']"
+                "value": "."
               },
               {
                 "type": "PATTERN",
                 "value": "['\"].*['\"]"
+              },
+              {
+                "type": "PATTERN",
+                "value": "(\\/\\/|#).*\\n"
+              },
+              {
+                "type": "PATTERN",
+                "value": "\\/\\*(.|\\r?\\n)*\\*\\/"
               }
             ]
           }
